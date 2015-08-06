@@ -14,6 +14,5 @@
 @property (nonatomic) NSArray * weekendPlans;
 @property (nonatomic) NSArray * celebrity;
 @property (nonatomic) NSArray * titles; 
--(void) initializeTitles;
 
 @end

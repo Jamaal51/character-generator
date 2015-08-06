@@ -8,6 +8,7 @@
 
 #import "CreatePageTableViewController.h"
 #import "ResultsPageViewController.h"
+#import "MainTableViewController.h"
 
 @interface CreatePageTableViewController ()
 
@@ -23,12 +24,27 @@
     
 }
 
-
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSLog(@"check");
+    
+    ResultsPageViewController *resultsPageViewController = segue.destinationViewController;
+    resultsPageViewController.planOne = self.plans;
+    resultsPageViewController.titles = self.titles;
+    //all this below is probably not needed, but I'll leave it here for now - Ayuna
+//    resultsPageViewController.angryEmojiButton = self.angryEmojiButton;
+//    resultsPageViewController.crazyEmojiButton = self.crazyEmojiButton;
+//    resultsPageViewController.kissEmojiButton = self.kissEmojiButton;
+//    resultsPageViewController.poopEmojiButton = self.poopEmojiButton;
+//    resultsPageViewController.tearsEmojiButton = self.tearsEmojiButton;
+//    resultsPageViewController.fireEmojiButton = self.fireEmojiButton;
+}
 
 - (IBAction)buttonTapped:(UIButton *)sender {
     
     if (self.angryEmojiButton.isTouchInside == YES){
         self.plans = [self.model.weekendPlans objectAtIndex:0];
+        self.titleToDisplayInMainTableVC = [self.model.titles objectAtIndex:0];
+        [self.titles addObject:_titleToDisplayInMainTableVC];
         NSLog(@"%@", self.plans);
     }
     if (self.crazyEmojiButton.isTouchInside == YES){
@@ -106,15 +122,7 @@
         NSLog(@"Lame...");
     }
 }
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    NSLog(@"check");
-    
-    
-    ResultsPageViewController *resultsPageViewController = segue.destinationViewController;
-    
-    resultsPageViewController.planOne = self.plans;
 
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "weekendPlans.h"
 
 @interface MainTableViewController : UITableViewController
+
+@property (nonatomic) NSMutableArray *titles;
+@property (nonatomic) weekendPlans *model; //the same object and property can exist/belong to multiple vc
 
 @end

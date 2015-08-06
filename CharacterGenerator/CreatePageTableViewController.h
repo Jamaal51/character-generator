@@ -12,9 +12,12 @@
 
 @interface CreatePageTableViewController : UITableViewController
 
-@property (nonatomic) weekendPlans *model;
 @property (nonatomic) NSString *plans;
-@property (nonatomic) NSMutableArray *titles; 
+@property (nonatomic) weekendPlans *model;
+@property (nonatomic) NSMutableArray *titles;
+
+@property (nonatomic) NSString *titleToDisplayInMainTableVC;
+
 
 // Emoji Buttons
 @property (weak, nonatomic) IBOutlet UIButton *angryEmojiButton;

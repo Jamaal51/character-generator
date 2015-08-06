@@ -12,9 +12,6 @@
 
 @interface MainTableViewController ()
 
-@property (nonatomic) NSMutableArray *titles;
-@property (nonatomic) weekendPlans *model;
-
 @end
 
 @implementation MainTableViewController
@@ -26,7 +23,7 @@
     [self.model initializeData];
 
     NSMutableArray *titles = [[NSMutableArray alloc] init];
-    self.titles = titles;
+    self.titles = titles; //property titles (to the left from the equal sign) equals to NSMutableArray *titles on line right above it)  
 
 }
 
@@ -36,9 +33,14 @@
     [self.tableView reloadData];
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    CreatePageTableViewController *createController = (CreatePageTableViewController *)segue.destinationViewController; //we need to create a segue vc that will carry on the same properties as the sender vc
+    createController.titles = self.titles; //this table vc passes then the NSMutableArray property to the segue vc
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -58,15 +60,7 @@
     NSString *title = [self.titles objectAtIndex:indexPath.row];
     cell.textLabel.text = title;
     
-    
-
-    
     return cell;
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    CreatePageTableViewController *createController = (CreatePageTableViewController *)segue.destinationViewController;
-    createController.titles = self.titles; //this table vc passes then the NSMutableArray property to the segue vc 
 }
 
 @end
