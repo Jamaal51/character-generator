@@ -7,8 +7,13 @@
 //
 
 #import "MainTableViewController.h"
+#import "weekendPlans.h"
+#import "CreatePageTableViewController.h"
 
 @interface MainTableViewController ()
+
+@property (nonatomic) NSMutableArray *titles;
+@property (nonatomic) weekendPlans *model;
 
 @end
 
@@ -17,6 +22,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.model = [[weekendPlans alloc]init];
+    [self.model initializeData];
+
+    NSMutableArray *titles = [[NSMutableArray alloc] init];
+    self.titles = titles;
+
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,17 +48,25 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.titles.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier"forIndexPath:indexPath];
     
-    // Configure the cell...
+    NSString *title = [self.titles objectAtIndex:indexPath.row];
+    cell.textLabel.text = title;
+    
+    
+
     
     return cell;
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    CreatePageTableViewController *createController = (CreatePageTableViewController *)segue.destinationViewController;
+    createController.titles = self.titles; //this table vc passes then the NSMutableArray property to the segue vc 
+}
 
 @end

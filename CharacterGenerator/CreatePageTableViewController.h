@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "weekendPlans.h"
+#import "MainTableViewController.h"
 
 @interface CreatePageTableViewController : UITableViewController
 
 @property (nonatomic) weekendPlans *model;
 @property (nonatomic) NSString *plans;
+@property (nonatomic) NSMutableArray *titles; 
 
 // Emoji Buttons
 @property (weak, nonatomic) IBOutlet UIButton *angryEmojiButton;

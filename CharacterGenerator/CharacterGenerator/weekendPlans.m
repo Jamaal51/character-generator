@@ -14,6 +14,7 @@
     
     [self initializeWeekendPlans];
     [self initializeCelebrity];
+    [self initializeTitles]; 
     
 }
 
@@ -30,9 +31,21 @@
     
 }
 
+
 -(void) initializeCelebrity {
     
     
+}
+
+-(void) initializeTitles {
+    self.titles = @[
+                    @"Read a book",
+                    @"Beach",
+                    @"Road trip",
+                    @"Grandma",
+                    @"Netflix",
+                    @"Party"
+                    ];
 }
 
 

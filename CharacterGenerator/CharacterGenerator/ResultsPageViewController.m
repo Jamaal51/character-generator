@@ -15,7 +15,7 @@
 
 @implementation ResultsPageViewController
 - (IBAction)buttonTapped:(UIButton *)sender {
-    
+    //add title to the titles array at the table vc 
     [self.navigationController popToRootViewControllerAnimated:YES];
 
     
