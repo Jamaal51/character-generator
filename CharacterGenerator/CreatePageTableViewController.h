@@ -17,11 +17,11 @@
 @property (nonatomic) NSString *celeb;
 @property (nonatomic) NSString *food;
 @property (nonatomic) NSString *alcohol;
+@property (nonatomic) NSString *titleToDisplayInMainTableVC;
 
 @property (nonatomic) NSMutableArray *titles;
 @property (nonatomic) weekendPlans *model;
 
-@property (nonatomic) NSString *titleToDisplayInMainTableVC;
 //new code below
 @property (nonatomic) WendPlanCharacter *planCharacter;
 @property (nonatomic) NSMutableArray *wendPlansObjects;

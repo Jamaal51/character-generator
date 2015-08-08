@@ -25,18 +25,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    //WendPlanCharacter *planCharacter = [[WendPlanCharacter alloc]init];
-    
-    //self.labelPlans.text = self.planCharacter.planString;
     self.labelPlans.text = self.character.planString;
     self.labelCeleb.text = self.character.celebString;
     self.labelFood.text = self.character.foodString;
     self.labelAlcohol.text = self.character.alcoholString;
     
-//    self.pokemonNameLabel.text = self.pokemonName;
-//    self.pokemonImageView.image = [UIImage imageNamed:self.pokemonImageName];
-    
-    [self.view reloadInputViews]; 
+    //[self.view reloadInputViews];
 
 }
 

@@ -10,6 +10,7 @@
 #import "ResultsPageViewController.h"
 #import "MainTableViewController.h"
 #import "WendPlanCharacter.h"
+#import "weekendPlans.h"
 
 @interface CreatePageTableViewController ()
 
@@ -26,7 +27,6 @@
     [self.alcoholSwitch setOn:NO animated:YES];
     
     //new lines of code
-    self.planCharacter = [[WendPlanCharacter alloc]init];
     NSMutableArray *wendPlansObjects = [[NSMutableArray alloc]init];
     self.wendPlansObjects = wendPlansObjects;
 
@@ -37,11 +37,12 @@
     
     WendPlanCharacter *newCharacter = [[WendPlanCharacter alloc] init];
     newCharacter.planString = self.plans;
-    newCharacter.celebString = self.celeb;
     newCharacter.foodString = self.food;
+    newCharacter.celebString = self.celeb;
     newCharacter.alcoholString = self.alcohol;
+    newCharacter.titleString = self.titleToDisplayInMainTableVC;
     
-    [self.titles addObject:newCharacter];
+    [self.wendPlansObjects addObject:newCharacter];
     
     ResultsPageViewController *resultsPageViewController = segue.destinationViewController;
     resultsPageViewController.character = newCharacter;
@@ -51,14 +52,6 @@
 //    resultsPageViewController.planThree = self.food;
 //    resultsPageViewController.planFour = self.alcohol;
     
-    //new code
-    [self.wendPlansObjects addObject:_planCharacter];
-    self.planCharacter.planString = resultsPageViewController.planOne;
-    
-    //resultsPageViewController.planOne = self.planCharacter.planString;
-    
-    
-
 }
 
 
@@ -68,9 +61,6 @@
         self.plans = [self.model.weekendPlans objectAtIndex:0];
         self.alcohol = [self.model.alcohol  objectAtIndex:0];
         self.titleToDisplayInMainTableVC = [self.model.titles objectAtIndex:0];
-//        [self.titles addObject:_titleToDisplayInMainTableVC];
-        //new line of code below
-//        [self.wendPlansObjects addObject:<#(id)#>]
         NSLog(@"%@", self.plans);
     }
     if (self.crazyEmojiButton.isTouchInside == YES){

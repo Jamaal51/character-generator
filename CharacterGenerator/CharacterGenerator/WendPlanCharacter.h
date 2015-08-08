@@ -16,4 +16,7 @@
 @property (nonatomic) NSString *alcoholString;
 @property (nonatomic) NSInteger number;
 
+//new code Sat morning
+@property (nonatomic) NSString *titleString; 
+
 @end

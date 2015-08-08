@@ -21,13 +21,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSMutableArray *characters = [[NSMutableArray alloc] init];
+    self.wendPlansObjects = characters;
+    
     self.model = [[weekendPlans alloc]init];
     [self.model initializeData];
 
     self.wendPlansObjects = [[NSMutableArray alloc]init]; //move to results
-    
-    NSMutableArray *titles = [[NSMutableArray alloc] init];
-    self.titles = titles; //property titles (to the left from the equal sign) equals to NSMutableArray *titles on line right above it)  
 
 }
 
@@ -41,10 +41,10 @@
     
     if ([segue.destinationViewController isKindOfClass:[CreatePageTableViewController class]]) {
         CreatePageTableViewController *createController = (CreatePageTableViewController *)segue.destinationViewController;
-        createController.titles = self.titles;
+        createController.wendPlansObjects = self.wendPlansObjects;
     } else {
         NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
-        WendPlanCharacter *character = [self.titles objectAtIndex:ip.row];
+        WendPlanCharacter *character = [self.titles objectAtIndex:ip.row];//can I change titles to wendplansObjects? 
         ResultsPageViewController *resultsController = (ResultsPageViewController *)segue.destinationViewController;
         resultsController.character = character;
     }
@@ -63,15 +63,15 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.titles.count;
+    return self.wendPlansObjects.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier"forIndexPath:indexPath];
     
-    WendPlanCharacter *title = [self.titles objectAtIndex:indexPath.row];
-    cell.textLabel.text = title.planString;
+    WendPlanCharacter *character = [self.wendPlansObjects objectAtIndex:indexPath.row];
+    cell.textLabel.text = character.titleString;
     
     return cell;
 }
